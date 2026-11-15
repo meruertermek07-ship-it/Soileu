@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Дислалияны түзету бағдарламасы</title>
+
+    <meta name="description" content="6–10 жастағы балаларға арналған интерактивті логопедиялық бағдарлама.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- НЕГІЗГІ САЙТ -->
+    <div id="app">
+
+        <!-- БАСТЫ БЕТ -->
+        <section id="homePage" class="page active">
+
+            <div class="hero">
+
+                <div class="hero-character">
+                    🐰
+                </div>
+
+                <h1>ДИСЛАЛИЯНЫ ТҮЗЕТУ БАҒДАРЛАМАСЫ</h1>
+
+                <h2>Сөйлеу әлеміне саяхат</h2>
+
+                <p>
+                    Әр дыбысты дұрыс айтуға бірге үйренейік!
+                </p>
+
+                <button onclick="startJourney()" class="main-button">
+                    САЯХАТТЫ БАСТАУ
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- НЕГІЗГІ МӘЗІР -->
+        <section id="mainMenu" class="page">
+
+            <h1>Сөйлеу әлеміне қош келдің!</h1>
+
+            <p>Өзіңе ұнайтын бөлімді таңда.</p>
+
+            <div class="menu-grid">
+
+                <button onclick="showPage('soundSelection')">
+                    🔤 Дыбысты таңдау
+                </button>
+
+                <button onclick="showPage('preparationPage')">
+                    🌸 Дайындық кезеңі
+                </button>
+
+                <button onclick="showPage('settingPage')">
+                    🎯 Дыбысты қою
+                </button>
+
+                <button onclick="showPage('automationPage')">
+                    🚀 Автоматтандыру
+                </button>
+
+                <button onclick="showPage('differentiationPage')">
+                    🎨 Дифференциациялау
+                </button>
+
+                <button onclick="showPage('relaxationPage')">
+                    🎵 Сергіту сәті
+                </button>
+
+                <button onclick="showPage('motorPage')">
+                    🧩 Ұсақ моторика
+                </button>
+
+                <button onclick="showPage('resultsPage')">
+                    ⭐ Менің нәтижелерім
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ДЫБЫСТАР -->
+        <section id="soundSelection" class="page">
+
+            <h1>Дыбысты таңда</h1>
+
+            <div id="soundGrid" class="sound-grid"></div>
+
+            <button onclick="showPage('mainMenu')">
+                ← Басты мәзір
+            </button>
+
+        </section>
+
+
+        <!-- ТАПСЫРМАЛАР -->
+        <section id="taskPage" class="page">
+
+            <h1 id="taskTitle">Тапсырма</h1>
+
+            <div id="taskContent"></div>
+
+            <div id="taskProgress"></div>
+
+            <button onclick="completeTask()">
+                ОРЫНДАДЫМ
+            </button>
+
+            <button onclick="showPage('soundSelection')">
+                ← Артқа
+            </button>
+
+        </section>
+
+
+        <!-- ДАЙЫНДЫҚ -->
+        <section id="preparationPage" class="page">
+            <h1>Дайындық кезеңі</h1>
+            <div id="preparationContent"></div>
+        </section>
+
+
+        <!-- ДЫБЫСТЫ ҚОЮ -->
+        <section id="settingPage" class="page">
+            <h1>Дыбысты қою</h1>
+            <div id="settingContent"></div>
+        </section>
+
+
+        <!-- АВТОМАТТАНДЫРУ -->
+        <section id="automationPage" class="page">
+            <h1>Автоматтандыру</h1>
+            <div id="automationContent"></div>
+        </section>
+
+
+        <!-- ДИФФЕРЕНЦИАЦИЯ -->
+        <section id="differentiationPage" class="page">
+            <h1>Дифференциациялау</h1>
+            <div id="differentiationContent"></div>
+        </section>
+
+
+        <!-- СЕРГІТУ -->
+        <section id="relaxationPage" class="page">
+            <h1>Сергіту сәті</h1>
+            <div id="relaxationContent"></div>
+        </section>
+
+
+        <!-- ҰСАҚ МОТОРИКА -->
+        <section id="motorPage" class="page">
+            <h1>Ұсақ моторика</h1>
+            <div id="motorContent"></div>
+        </section>
+
+
+        <!-- НӘТИЖЕЛЕР -->
+        <section id="resultsPage" class="page">
+            <h1>Менің нәтижелерім</h1>
+            <div id="resultsContent"></div>
+        </section>
+
+
+        <!-- ДИПЛОМ -->
+        <section id="diplomaPage" class="page">
+            <h1>🏆 ДЫБЫСТАР ШЕБЕРІ</h1>
+            <div id="diplomaContent"></div>
+        </section>
+
+
+        <!-- КАМЕРА ЖӘНЕ МИКРОФОН -->
+        <section id="mediaPanel">
+
+            <div id="cameraPanel">
+                <h3>📷 Өз-өзіңді бақыла</h3>
+
+                <video id="cameraVideo" autoplay playsinline muted></video>
+
+                <button onclick="startCamera()">
+                    Камераны қосу
+                </button>
+
+                <button onclick="stopCamera()">
+                    Камераны өшіру
+                </button>
+            </div>
+
+            <div id="microphonePanel">
+
+                <h3>🎤 Микрофон</h3>
+
+                <button onclick="startMicrophone()">
+                    Микрофонды қосу
+                </button>
+
+                <button onclick="stopMicrophone()">
+                    Микрофонды өшіру
+                </button>
+
+                <div id="soundLevel">
+                    Дыбыс деңгейі: анықталмады
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- JAVASCRIPT ФАЙЛДАРЫ -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
