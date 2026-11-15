@@ -82,17 +82,15 @@
         </div>
 
         <!-- БАСТАУ БАТЫРМАСЫ -->
-        <button
-            type="button"
-            class="primary-button"
-            onclick="
-                document.getElementById('homePage').classList.remove('active');
-                document.getElementById('mainMenu').classList.add('active');
-                window.scrollTo(0,0);
-            ">
+       <button
+    type="button"
+    id="startProgramButton"
+    class="primary-button"
+    onclick="document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById('mainMenu').classList.add('active'); window.scrollTo(0,0);">
 
-            🚀 САЯХАТТЫ БАСТАУ
+    🚀 САЯХАТТЫ БАСТАУ
 
+</button>
         </button>
 
     </div>
