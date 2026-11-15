@@ -1326,7 +1326,53 @@ document.addEventListener("click", function(event) {
             startFineMotorGame(index);
         }
     }
+// ============================================
+// ҚОСЫМША БАСҚАРУ ТҮЗЕТУЛЕРІ
+// ============================================
 
+// Мобильді мәзір
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNavigation = document.getElementById("mainNavigation");
+
+    if (menuToggle && mainNavigation) {
+        menuToggle.addEventListener("click", () => {
+            mainNavigation.classList.toggle("open");
+
+            const isOpen = mainNavigation.classList.contains("open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        mainNavigation.querySelectorAll("[data-page]").forEach(button => {
+            button.addEventListener("click", () => {
+                mainNavigation.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+            });
+        });
+    }
+});
+
+// Тапсырма ішіндегі микрофон батырмасы
+document.addEventListener("click", event => {
+    const micButton = event.target.closest("#taskMicButton");
+
+    if (micButton) {
+        if (App && App.media && App.media.microphoneActive) {
+            stopMicrophone();
+        } else {
+            startMicrophone();
+        }
+    }
+});
+
+// Беттің қайта жүктелуінде мәзірді жабу
+window.addEventListener("pageshow", () => {
+    const navigation = document.getElementById("mainNavigation");
+
+    if (navigation) {
+        navigation.classList.remove("open");
+    }
+});
 });
 
 
